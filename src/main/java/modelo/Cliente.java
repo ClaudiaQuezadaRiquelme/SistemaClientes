@@ -8,7 +8,11 @@ public class Cliente {
 	private CategoriaEnum nombreCategoria;
 	
 	public Cliente (String runCliente, String nombreCliente, String apellidoCliente, int aniosCliente, CategoriaEnum nombreCategoria) {
-		
+		this.runCliente = runCliente;
+		this.nombreCliente = nombreCliente;
+		this.apellidoCliente = apellidoCliente;
+		this.aniosCliente = aniosCliente;
+		this.nombreCategoria = nombreCategoria;
 	}
 
 	public String getRunCliente() {
