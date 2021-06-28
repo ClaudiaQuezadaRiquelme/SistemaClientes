@@ -1,5 +1,7 @@
 package cl.edutecno.SistemaClientes;
 
+import vista.Menu;
+
 public class MenuTest {
 	private Menu menu = new Menu();
 	

@@ -1,4 +1,4 @@
-package cl.edutecno.SistemaClientes;
+package vista;
 
 public class Menu {
 
