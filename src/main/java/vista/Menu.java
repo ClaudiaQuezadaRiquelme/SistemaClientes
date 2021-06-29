@@ -1,5 +1,6 @@
 package vista;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import modelo.CategoriaEnum;
@@ -73,8 +74,11 @@ public class Menu {
 						System.out.println("Ingrese por favor caracteres numéricos de 1 a 6.");
 					break;
 				}
-			} catch (Exception e) {
+			} catch (java.util.InputMismatchException ime) {
 				System.out.println("Ha ingresado una opción inválida. Por favor, Ingrese sólo caracteres numéricos de 1 a 6.");
+				scn.nextLine(); // evita loop infinito con scanner
+			} catch (Exception e) {
+				System.out.println("Error en la ejecución");
 			}
 			System.out.println(" ");
 		} while (opcionElegida != 6);
