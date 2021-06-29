@@ -2,6 +2,7 @@ package vista;
 
 import java.util.Scanner;
 
+import modelo.CategoriaEnum;
 import servicio.ClienteServicio;
 
 public class Menu {
@@ -54,25 +55,16 @@ public class Menu {
 						listar();
 					break;
 					case 2: // Agregar Cliente
-						System.out.println("===== Editar datos =====");
-						System.out.println("Ingrese código del producto:");
-						//String codigo = sc.next();
-						//productoServicio.setListaProductos(archivoServicio.editarDatos​(codigo, productoServicio.getListaProductos(), sc));
-	
-						System.out.println("===== Fin editar datos =====");
+						agregar();
 					break;
 					case 3: // Editar Cliente
-						System.out.println("===== Importar datos =====");
-						//productoServicio.setListaProductos(archivoServicio.cargarDatos​());
-						System.out.println("===== Fin importar datos =====");
+						editar();
 					break;
 					case 4: // Cargar Datos
-						System.out.println("Abandonando el sistema de productos...");
-						//utilidad.salirSistema();
+						cargar();
 					break;
 					case 5: // Exportar Datos
-						System.out.println("Abandonando el sistema de productos...");
-						//utilidad.salirSistema();
+						exportar();
 					break;
 					case 6: // Salir
 						salir();
@@ -93,7 +85,19 @@ public class Menu {
 		clienteServicio.listarClientes();
 	}
 	public void agregar() {
+		System.out.println("-------------Crear Cliente-------------");
+		System.out.println("Ingresa RUN del Cliente:");
+		String runCliente = scn.next();
+		System.out.println("Ingresa Nombre del Cliente:");
+		String nombreCliente = scn.next();
+		System.out.println("Ingresa Apellido del Cliente:");
+		String apellidoCliente = scn.next();
+		System.out.println("Ingresa años como Cliente:");
+		int aniosCliente = scn.nextInt();
+		CategoriaEnum nombreCategoria = CategoriaEnum.ACTIVO;
 		
+		clienteServicio.agregarCliente(runCliente, nombreCliente, apellidoCliente, aniosCliente, nombreCategoria);
+		System.out.println("---------------------------------------");
 	}
 	public void editar() {
 		
