@@ -171,7 +171,7 @@ public class Menu {
 			System.out.println("El estado actual es: " + cliente.getNombreCategoria());
 			System.out.println("1.-Si desea cambiar el estado del Cliente a Inactivo");
 			System.out.println("2.-Si desea mantener el estado del cliente Activo");
-			System.out.printf("\nIngrese opcion:\n----------------------------------------\n");
+			System.out.printf("\nIngrese opcion:\n");
 			int opcionElegida = 0;
 			
 			do {
@@ -206,7 +206,86 @@ public class Menu {
 		return true; // salir
 	}
 	private boolean editarDatos() {
+		boolean clientExist = false;
+		System.out.printf("\nIngrese RUN del Cliente a editar:\n");
+		String runCliente = scn.next();
+		List<Cliente> listaClientes = clienteServicio.getListaCliente();
+		Cliente cliente = new Cliente();
+		int listaLength = listaClientes.size();
+		for (int i = 0; i < listaLength; i++) {
+			String runTemp = listaClientes.get(i).getRunCliente();
+			if (runCliente.equals(runTemp)) {
+				cliente = listaClientes.get(i);
+				clientExist = true;
+				break;
+			}
+		}
 		
+		if (clientExist) {
+			System.out.printf("\n----Actualizando datos del Cliente-----\n"
+					+ "1.-El RUN del Cliente es: " + cliente.getRunCliente()
+					+ "2.-El Nombre del Cliente es: " + cliente.getNombreCliente()
+					+ "3.-El Apellido del Cliente es: " + cliente.getApellidoCliente()
+					+ "4.-Los años como Cliente son: " + cliente.getAniosCliente()
+					+ "\n"
+					+ "Ingrese opcion a editar de los datos del cliente:"
+					+ "\n"
+					);
+			int opcionElegida = 0;
+			
+			do {
+				try {
+					opcionElegida = scn.nextInt();
+					switch (opcionElegida) {
+						case 1:
+							System.out.println("----------------------------------------");
+							System.out.println(opcionElegida + ".-Ingrese nuevo RUN del Cliente:");
+							String newRun = scn.next();
+							clienteServicio.editarCliente(cliente, newRun, opcionElegida);
+							System.out.println("----------------------------------------");
+							System.out.println("Datos cambiados con éxito");
+							return true; // salir
+						// break;
+						case 2:
+							System.out.println("----------------------------------------");
+							System.out.println(opcionElegida + ".-Ingrese nuevo NOMBRE del Cliente:");
+							String newNombre = scn.next();
+							clienteServicio.editarCliente(cliente, newNombre, opcionElegida);
+							System.out.println("----------------------------------------");
+							System.out.println("Datos cambiados con éxito");
+							return true; // salir
+						case 3:
+							System.out.println("----------------------------------------");
+							System.out.println(opcionElegida + ".-Ingrese nuevo APELLIDO del Cliente:");
+							String newApellido = scn.next();
+							clienteServicio.editarCliente(cliente, newApellido, opcionElegida);
+							System.out.println("----------------------------------------");
+							System.out.println("Datos cambiados con éxito");
+							return true; // salir
+						// break;
+						case 4:
+							System.out.println("----------------------------------------");
+							System.out.println(opcionElegida + ".-Actualice los AÑOS como Cliente:");
+							int newAnios = scn.nextInt();
+							clienteServicio.editarCliente(cliente, newAnios);
+							System.out.println("----------------------------------------");
+							System.out.println("Datos cambiados con éxito");
+							return true; // salir
+						// break;
+						default:
+							System.out.println("Ingrese por favor caracteres numéricos entre 1 y 4.");
+						break;
+					}
+				} catch (java.util.InputMismatchException ime) {
+					System.out.println("Ha ingresado una opción inválida. Por favor, Ingrese sólo caracteres numéricos entre 1 y 4.");
+					scn.nextLine(); // evita loop infinito con scanner
+				} catch (Exception e) {
+					System.out.println("Error en la ejecución");
+				}
+			} while((opcionElegida < 1) || (opcionElegida > 4));
+		}  else {
+			System.out.println("El run ingresado no corresponde con ninguno de nuestros clientes.");
+		}
 		return true; // salir
 	}
 	private void cargar() {

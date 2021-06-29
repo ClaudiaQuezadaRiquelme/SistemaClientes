@@ -28,19 +28,60 @@ public class ClienteServicio {
 		Cliente cliente = new Cliente(runCliente, nombreCliente, apellidoCliente, aniosCliente, nombreCategoria);
 		listaClientes.add(cliente);
 	}
-	public void editarCliente (Cliente cliente, String runCliente) {
-		// Buscar el cliente en la lista clientes
+	public void editarCliente (Cliente cliente, String cambio, int opcion) {
+		int listaLength = listaClientes.size();
+		switch (opcion) {
+		case 1:
+			cliente.setRunCliente(cambio);
+			for (int i = 0; i < listaLength; i++) {
+				
+				if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) { // Buscar el cliente en la lista clientes
+					listaClientes.get(i).setRunCliente(cambio); // Editar los parámetros de ese cliente
+				}
+			}
+			break;
+		case 2:
+			cliente.setNombreCliente(cambio);
+			for (int i = 0; i < listaLength; i++) {
+				
+				if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) { // Buscar el cliente en la lista clientes
+					listaClientes.get(i).setNombreCliente(cambio); // Editar los parámetros de ese cliente
+				}
+			}
+			break;
+		case 3:
+			cliente.setApellidoCliente(cambio);
+			for (int i = 0; i < listaLength; i++) {
+				
+				if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) { // Buscar el cliente en la lista clientes
+					listaClientes.get(i).setApellidoCliente(cambio); // Editar los parámetros de ese cliente
+				}
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+	public void editarCliente (Cliente cliente, int anios) {
+		cliente.setAniosCliente(anios);
 		
-		// Editar los parámetros de ese cliente
+		int listaLength = listaClientes.size();
+		for (int i = 0; i < listaLength; i++) {
+			
+			if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) { // Buscar el cliente en la lista clientes
+				listaClientes.get(i).setAniosCliente(anios); // Editar los parámetros de ese cliente
+			}
+		}
 	}
 	public void editarCliente (Cliente cliente, CategoriaEnum nombreCategoria) {
 		cliente.setNombreCategoria(nombreCategoria);
-		// Buscar el cliente en la lista clientes
+		
 		int listaLength = listaClientes.size();
 		for (int i = 0; i < listaLength; i++) {
-			// Editar los parámetros de ese cliente
-			if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) {
-				listaClientes.get(i).setNombreCategoria(nombreCategoria);
+			
+			if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) { // Buscar el cliente en la lista clientes
+				listaClientes.get(i).setNombreCategoria(nombreCategoria); // Editar los parámetros de ese cliente
 			}
 		}
 	}
