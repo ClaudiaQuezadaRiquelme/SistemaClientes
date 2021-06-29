@@ -14,6 +14,8 @@ public class Cliente {
 		this.aniosCliente = aniosCliente;
 		this.nombreCategoria = nombreCategoria;
 	}
+	
+	public Cliente () {}
 
 	public String getRunCliente() {
 		return runCliente;

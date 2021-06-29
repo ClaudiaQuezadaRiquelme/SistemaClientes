@@ -28,9 +28,20 @@ public class ClienteServicio {
 		Cliente cliente = new Cliente(runCliente, nombreCliente, apellidoCliente, aniosCliente, nombreCategoria);
 		listaClientes.add(cliente);
 	}
-	public void editarCliente (String runCliente, String nombreCliente, String apellidoCliente, int aniosCliente, CategoriaEnum nombreCategoria) {
+	public void editarCliente (Cliente cliente, String runCliente) {
 		// Buscar el cliente en la lista clientes
 		
 		// Editar los parámetros de ese cliente
+	}
+	public void editarCliente (Cliente cliente, CategoriaEnum nombreCategoria) {
+		cliente.setNombreCategoria(nombreCategoria);
+		// Buscar el cliente en la lista clientes
+		int listaLength = listaClientes.size();
+		for (int i = 0; i < listaLength; i++) {
+			// Editar los parámetros de ese cliente
+			if (listaClientes.get(i).getRunCliente().equals(cliente.getRunCliente())) {
+				listaClientes.get(i).setNombreCategoria(nombreCategoria);
+			}
+		}
 	}
 }
