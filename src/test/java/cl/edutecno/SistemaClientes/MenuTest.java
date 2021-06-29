@@ -3,7 +3,7 @@ package cl.edutecno.SistemaClientes;
 import vista.Menu;
 
 public class MenuTest {
-	private Menu menu = new Menu();
+	private Menu menu = Menu.getMenu();
 	
 	public void testListar() {
 		

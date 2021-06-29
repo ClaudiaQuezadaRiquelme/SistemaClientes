@@ -57,8 +57,12 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "Cliente [runCliente=" + runCliente + ", nombreCliente=" + nombreCliente + ", apellidoCliente="
-				+ apellidoCliente + ", aniosCliente=" + aniosCliente + ", nombreCategoria=" + nombreCategoria + "]";
+		return "RUN del Cliente: " + runCliente 
+				+ "\nNombre del Cliente: " + nombreCliente 
+				+ "\nApellido del Cliente: " + apellidoCliente 
+				+ "\nAños como Cliente: " + aniosCliente 
+				+ "\nCategoría del Cliente: " + nombreCategoria 
+				+ "\n";
 	}
 	
 }

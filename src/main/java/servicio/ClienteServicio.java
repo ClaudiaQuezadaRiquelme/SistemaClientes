@@ -16,8 +16,13 @@ public class ClienteServicio {
 		return listaClientes;
 	}
 	
-	public void listarClientes () {
-		// recorrer lista clientes y mostrar información
+	public void listarClientes () { // recorrer lista clientes y mostrar información
+		int listaLength = listaClientes.size();
+		for (int i = 0; i < listaLength; i++) {
+			System.out.println("-------------Datos del Cliente-------------");
+			System.out.printf("\n" + listaClientes.get(i).toString());
+			System.out.println("-------------------------------------------");
+		}
 	}
 	public void agregarCliente (String runCliente, String nombreCliente, String apellidoCliente, int aniosCliente, CategoriaEnum nombreCategoria) {
 		Cliente cliente = new Cliente(runCliente, nombreCliente, apellidoCliente, aniosCliente, nombreCategoria);
