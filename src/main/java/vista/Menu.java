@@ -1,9 +1,11 @@
 package vista;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import modelo.CategoriaEnum;
+import modelo.Cliente;
 import servicio.ClienteServicio;
 
 public class Menu {
@@ -32,6 +34,9 @@ public class Menu {
 			synchronized (Menu.class) {
 				if (menu == null) {
 					menu = new Menu();
+					
+					ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+					menu.clienteServicio = new ClienteServicio(listaClientes);
 				}
 			}
 		}
