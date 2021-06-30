@@ -30,6 +30,9 @@ public class ExportadorTxt extends Exportador {
 		} catch (IOException e) {
 			System.out.println("Error en escribir y cerrar archivo");
 			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Error en exportar txt");
+			e.printStackTrace();
 		}
 		System.out.println("-----------------------------------------------");
 		System.out.println("Datos de clientes exportados correctamente en formato csv.");

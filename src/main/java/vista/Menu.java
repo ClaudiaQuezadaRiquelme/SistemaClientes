@@ -7,12 +7,13 @@ import java.util.Scanner;
 import modelo.CategoriaEnum;
 import modelo.Cliente;
 import servicio.ClienteServicio;
+import servicio.ExportadorCsv;
 import servicio.ExportadorTxt;
 
 public class Menu {
 	private ClienteServicio clienteServicio;
 	//private ArchivoServicio archivoServicio;
-//	private ExportarCsv exportarCsv;
+	private ExportadorCsv exportarCsv;
 	private ExportadorTxt exportadorTxt;
 	private String fileName = "clientes";
 	private String fileName1 = "DBClientes.csv";
@@ -88,7 +89,7 @@ public class Menu {
 				System.out.println("Ha ingresado una opción inválida. Por favor, Ingrese sólo caracteres numéricos de 1 a 6.");
 				scn.nextLine(); // evita loop infinito con scanner
 			} catch (Exception e) {
-				System.out.println("Error en la ejecución");
+				System.out.println("Error en la ejecución (método iniciarMenu)");
 			}
 			System.out.println(" ");
 		} while (opcionElegida != 6);
@@ -146,7 +147,7 @@ public class Menu {
 				System.out.println("Ha ingresado una opción inválida. Por favor, Ingrese sólo caracteres numéricos: 1 ó 2.");
 				scn.nextLine(); // evita loop infinito con scanner
 			} catch (Exception e) {
-				System.out.println("Error en la ejecución");
+				System.out.println("Error en la ejecución (método editar)");
 			}
 			System.out.println(" ");
 		} while( ((opcionElegida != 1) || (opcionElegida != 2)) && (salir == false));
@@ -290,7 +291,17 @@ public class Menu {
 		return true; // salir
 	}
 	private void cargar() {
+		System.out.println("---------Cargar Datos en Linux o Mac-----------");
+		System.out.println("Ingresa la ruta en donde se encuentra el archivo " + fileName1 + ":");
+		scn.nextLine();
+		String ruta = scn.next();
+		ruta = ruta + "/" + fileName1;
 		
+		exportarCsv = new ExportadorCsv(clienteServicio);
+		exportarCsv.exportar(ruta, clienteServicio.getListaCliente());
+		
+		System.out.println("-----------------------------------------------");
+		System.out.println("Datos cargados correctamente en la lista.");
 	}
 	private void exportar() {
 		System.out.println("---------Exportar Datos-----------");
