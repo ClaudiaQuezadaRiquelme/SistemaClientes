@@ -7,13 +7,14 @@ import java.util.Scanner;
 import modelo.CategoriaEnum;
 import modelo.Cliente;
 import servicio.ClienteServicio;
+import servicio.ExportadorTxt;
 
 public class Menu {
 	private ClienteServicio clienteServicio;
 	//private ArchivoServicio archivoServicio;
 //	private ExportarCsv exportarCsv;
-//	private ExportarTxt exportarTxt;
-	private String fileName = "Clientes";
+	private ExportadorTxt exportadorTxt;
+	private String fileName = "clientes";
 	private String fileName1 = "DBClientes.csv";
 	private Scanner scn;
 	
@@ -223,10 +224,10 @@ public class Menu {
 		
 		if (clientExist) {
 			System.out.printf("\n----Actualizando datos del Cliente-----\n"
-					+ "1.-El RUN del Cliente es: " + cliente.getRunCliente()
-					+ "2.-El Nombre del Cliente es: " + cliente.getNombreCliente()
-					+ "3.-El Apellido del Cliente es: " + cliente.getApellidoCliente()
-					+ "4.-Los años como Cliente son: " + cliente.getAniosCliente()
+					+ "1.-El RUN del Cliente es: " + cliente.getRunCliente() + "\n"
+					+ "2.-El Nombre del Cliente es: " + cliente.getNombreCliente() + "\n"
+					+ "3.-El Apellido del Cliente es: " + cliente.getApellidoCliente() + "\n"
+					+ "4.-Los años como Cliente son: " + cliente.getAniosCliente()+ "\n"
 					+ "\n"
 					+ "Ingrese opcion a editar de los datos del cliente:"
 					+ "\n"
@@ -292,7 +293,42 @@ public class Menu {
 		
 	}
 	private void exportar() {
-		
+		System.out.println("---------Exportar Datos-----------");
+		System.out.printf("Seleccione el formato a exportar:\n"
+				+ "1.-Formato csv\n"
+				+ "2.-Formato txt\n"
+				+ "\n");
+		int opcionElegida = 0;
+		boolean salir = false;
+		do {
+			try {
+				System.out.println("Ingrese una opción para exportar:");
+				opcionElegida = scn.nextInt();
+				switch (opcionElegida) {
+					case 1:
+						// csv
+						salir = true;
+					break;
+					case 2:
+						generarDocTxt();
+						salir = true;
+					break;
+					default:
+						System.out.println("Ingrese por favor caracteres numéricos: 1 ó 2.");
+					break;
+				}
+			} catch (java.util.InputMismatchException ime) {
+				System.out.println("Ha ingresado una opción inválida. Por favor, Ingrese sólo caracteres numéricos: 1 ó 2.");
+				scn.nextLine(); // evita loop infinito con scanner
+			} catch (Exception e) {
+				System.out.println("Error en la ejecución");
+			}
+			System.out.println(" ");
+		} while ( ((opcionElegida != 1) || (opcionElegida != 2)) && !salir);
+	}
+	private void generarDocTxt() {
+		exportadorTxt = new ExportadorTxt(clienteServicio);
+		exportadorTxt.exportar(fileName, clienteServicio.getListaCliente());
 	}
 	private void salir() {
 		System.out.println("Hasta luego.");

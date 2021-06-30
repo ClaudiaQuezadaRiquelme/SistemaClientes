@@ -1,0 +1,12 @@
+RUN del Cliente: 17840170-k
+Nombre del Cliente: Claudia
+Apellido del Cliente: Meowmer
+Años como Cliente: 1
+Categoría del Cliente: ACTIVO
+
+RUN del Cliente: 18888999-0
+Nombre del Cliente: Sofia
+Apellido del Cliente: Miau
+Años como Cliente: 1
+Categoría del Cliente: ACTIVO
+

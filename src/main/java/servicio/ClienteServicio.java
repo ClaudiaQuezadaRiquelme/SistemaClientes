@@ -24,6 +24,9 @@ public class ClienteServicio {
 			System.out.println("-------------------------------------------");
 		}
 	}
+	public String listarClientes (int index) { // diseñado para recibir el index del cliente y retornar string con la info del cliente. Debe estar dispuesto dentro de un ciclo.
+		return listaClientes.get(index).toString();
+	}
 	public void agregarCliente (String runCliente, String nombreCliente, String apellidoCliente, int aniosCliente, CategoriaEnum nombreCategoria) {
 		Cliente cliente = new Cliente(runCliente, nombreCliente, apellidoCliente, aniosCliente, nombreCategoria);
 		listaClientes.add(cliente);
